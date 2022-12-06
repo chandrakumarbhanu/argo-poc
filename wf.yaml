@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: cicd-workflow-template-
+  namespace: argo
+  labels:
+    workflows.argoproj.io/workflow-template: cicd-workflow-template
+    #submit-from-ui: 'true'
+spec:
+  serviceAccountName: argo
+  arguments:
+    parameters:
+      - name: branch
+        value: main
+      - name: dockerRepo
+        value: hanudev.jfrog.io/docker-local/go-api:2.0
+  workflowTemplateRef:
+    name: cicd-workflow-template
