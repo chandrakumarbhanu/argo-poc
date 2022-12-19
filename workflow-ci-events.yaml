@@ -9,7 +9,7 @@ metadata:
       This workflow is implementing CICD for simple GO API.
 spec:
   #serviceAccountName: workflow-executor-sa
-  serviceAccountName: argo
+  serviceAccountName: argo-events-core
   arguments:
     parameters:
       - name: branch
@@ -17,7 +17,7 @@ spec:
       #- name: dockerRepo
       #  value: docker.io/qdnqn/argo-workflows:1.0.0
       - name: dockerRepo
-        value:  hanub.jfrog.io/default-docker/go-api:1.0
+        value:  hanub.jfrog.io/default-docker/go-api:2.0
   entrypoint: main
 
   podGC:

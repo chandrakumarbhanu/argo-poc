@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ClusterWorkflowTemplate
+metadata:
+  name: clone
+spec:
+    templates:
+    - name: clone
+      container:
+        volumeMounts:
+          - mountPath: /go/src/github.com/go-api
+            name: work
+            subPath: src
+          - mountPath: /go/pkg/mod
+            name: work
+            subPath: GOMODCACHE
+          - mountPath: /root/.cache/go-build
+            name: work
+            subPath: GOCACHE
+        image: golang:1.18
+        workingDir: /go/src/github.com/go-api
+        command: [ sh, -euxc ]
+        args:
+          - |
+            git clone -v -b master --single-branch --depth 1 https://github.com/chandrakumarbhanu/go-api.git .

@@ -1,0 +1,19 @@
+https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install.yaml 
+
+kubectl create secrets generic docker-config --from-file=config.json -n argo-events
+
+
+28 kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install.yaml             
+  29 # Install with a validating admission controller                                                                  
+  30 kubectl apply -f https://raw.githubusercontent.com/argoproj/argo-events/stable/manifests/install-validating-web...
+  31 kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/eventbus...
+  32 kubectl get po -n argo                                                                                            
+  33 kubectl get po -n argo-events                                                                                     
+  34 kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/event-so...
+  35  # sensor rbac                                                                                                    
+  36 kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/master/examples/rbac/sen...
+  37  # workflow rbac                                                                                                  
+  38 kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/master/examples/rbac/wor...
+  39 kubectl apply -n argo-events -f https://raw.githubusercontent.com/argoproj/argo-events/stable/examples/sensors/...
+  40 kubectl get po -n argo-events                                                                                     
+  
